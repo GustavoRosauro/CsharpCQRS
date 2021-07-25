@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CQRSExample.Commands
 {
-    public class EmployeeCommands
+    public class EmployeeCreate
     {        
         public int Id { get; set; }
         public string FirstName { get; set; }

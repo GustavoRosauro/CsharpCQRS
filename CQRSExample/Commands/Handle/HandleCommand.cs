@@ -14,7 +14,7 @@ namespace CQRSExample.Commands.Handle
         {
             _repository = repository;
         }
-        public void Handle(EmployeeCommands command)
+        public void Handle(EmployeeCreate command)
         {
             Employee employee = new Employee()
             {

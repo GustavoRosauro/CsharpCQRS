@@ -8,6 +8,6 @@ namespace CQRSExample.Commands.Handle
 {
     public interface IHandleCoomand
     {
-        void Handle(EmployeeCommands command);
+        void Handle(EmployeeCreate command);
     }
 }

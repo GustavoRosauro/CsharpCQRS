@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CQRSExample.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,28 @@ namespace CQRSExample.Repositories
 {
     public class EmployeeQueriesRepository : IEmployeeQueriesRepository
     {
-        public Employee GetById(int employeeId)
+        private readonly ISqlDatabase _database;
+        public EmployeeQueriesRepository(ISqlDatabase database)
         {
+            _database = database;
+        }
+        public Employee GetById(int employeeId)
+        {            
+            var filter = new { employeeId = employeeId };
+            var fields = typeof(Employee).GetProperties();
+            string campos = string.Join(",", fields.Select(x => x.Name));
+            string sql = $"SELECT {campos} FROM {nameof(Employee)} WHERE ID = @{nameof(employeeId)}";
+            var lista = _database.Querys(sql,filter);
+            var employee = lista.First();
             return new Employee()
             {
-                Id = 100,
-                FirstName = "Gustavo",
-                LastName = "Rosauro",
-                DateOfBirth = new DateTime(1992, 2, 23),
-                Street = "Rua da Conceição",
-                City = "Blumenau",
-                PostalCode = "2423432"
+                Id = employee.Id,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                City = employee.City,
+                DateOfBirth = employee.DateOfBirth,
+                PostalCode = employee.PostalCode,
+                Street = employee.Street
             };
         }        
     }

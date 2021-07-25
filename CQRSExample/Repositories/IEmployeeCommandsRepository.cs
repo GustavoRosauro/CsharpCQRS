@@ -8,6 +8,6 @@ namespace CQRSExample.Repositories
 {
     public interface IEmployeeCommandsRepository
     {
-        void SaveEmployee(Employee employee);
+        void SaveEmployee(object model);
     }
 }

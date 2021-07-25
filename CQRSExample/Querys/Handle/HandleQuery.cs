@@ -27,4 +27,4 @@ namespace CQRSExample.Querys.Handle
             };
         }
     }
-}
+}   

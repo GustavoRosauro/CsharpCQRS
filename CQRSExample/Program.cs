@@ -10,9 +10,8 @@ namespace CQRSExample
         static void Main(string[] args)
         {
             var command = Initialize.Injection();
-            command.Handle(new EmployeeCommands()
+            command.Handle(new EmployeeCreate()
             {
-                Id = 200,
                 FirstName = "jerry",
                 LastName = "TOM",
                 Street = "Rua XV",
@@ -22,7 +21,7 @@ namespace CQRSExample
             });
             Console.WriteLine("Command was been stored");
             var query = Initialize.InjectionQuerys();
-            var emp = query.Handle(new EmployeeQueries() {EmployeeId = 100 });
+            var emp = query.Handle(new EmployeeQueries() {EmployeeId = 4 });
             Console.WriteLine($"Employee ID:{emp.Id}, Name:{emp.FullName}, Address:{emp.Adress}, Age:{emp.Age}");
             Console.ReadKey();
         }

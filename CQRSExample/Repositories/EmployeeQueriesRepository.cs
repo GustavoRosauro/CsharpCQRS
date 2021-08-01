@@ -22,16 +22,7 @@ namespace CQRSExample.Repositories
             string sql = $"SELECT {campos} FROM {nameof(Employee)} WHERE ID = @{nameof(employeeId)}";
             var lista = _database.Querys(sql,filter);
             var employee = lista.First();
-            return new Employee()
-            {
-                Id = employee.Id,
-                FirstName = employee.FirstName,
-                LastName = employee.LastName,
-                City = employee.City,
-                DateOfBirth = employee.DateOfBirth,
-                PostalCode = employee.PostalCode,
-                Street = employee.Street
-            };
+            return new Employee(employee.FirstName, employee.LastName, employee.DateOfBirth, employee.Street, employee.City, employee.PostalCode) {Id = employee.Id};            
         }        
     }
 }

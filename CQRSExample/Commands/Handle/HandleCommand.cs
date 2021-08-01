@@ -16,16 +16,7 @@ namespace CQRSExample.Commands.Handle
         }
         public void Handle(EmployeeCreate command)
         {
-            Employee employee = new Employee()
-            {
-                Id = command.Id,
-                FirstName = command.FirstName,
-                LastName = command.LastName,
-                DateOfBirth = command.DateOfBirth,
-                Street = command.Street,
-                City = command.City,
-                PostalCode = command.PostalCode
-            };
+            Employee employee = new Employee(command.FirstName,command.LastName,command.DateOfBirth,command.Street,command.City,command.PostalCode);            
             _repository.SaveEmployee(employee);
         }
     }

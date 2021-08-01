@@ -12,8 +12,8 @@ namespace CQRSExample
             var command = Initialize.Injection();
             command.Handle(new EmployeeCreate()
             {
-                FirstName = "jerry",
-                LastName = "TOM",
+                FirstName = "Jerry",
+                LastName = "Tom",
                 Street = "Rua XV",
                 City = "Blumenau",
                 PostalCode = "23489023",
